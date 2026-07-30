@@ -428,58 +428,9 @@ section { padding-block: clamp(48px, 8vw, 96px); }
 .article-cover { margin-bottom: 8px; }
 .article-cover img { width: 100%; border-radius: var(--radius-l); border: 1px solid var(--border); aspect-ratio: 16/9; object-fit: cover; }
 
-/* --- Devis / formulaire ------------------------------------------------------ */
+/* --- Mise en page prose + sidebar (pages prestation / ville) ----------------- */
 .devis-layout { display: grid; gap: 32px; }
 @media (min-width: 980px) { .devis-layout { grid-template-columns: 1.5fr 1fr; align-items: start; } }
-.form-panel { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-l); padding: clamp(22px, 4vw, 40px); }
-.form-block + .form-block { margin-top: 34px; padding-top: 34px; border-top: 1px solid var(--border); }
-.form-block .step-label { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; }
-.form-block .step-label .n { width: 32px; height: 32px; border-radius: 50%; background: var(--red); color: var(--white); display: flex; align-items: center; justify-content: center; font-family: var(--font-display); flex-shrink: 0; }
-.form-block .step-label h2 { font-size: 1.15rem; margin: 0; }
-
-.need-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 12px; }
-.need-option { position: relative; }
-.need-option input { position: absolute; opacity: 0; inset: 0; width: 100%; height: 100%; cursor: pointer; }
-.need-option label {
-  display: flex; flex-direction: column; align-items: center; text-align: center; gap: 10px;
-  padding: 18px 12px; border: 1.5px solid var(--border); border-radius: var(--radius-m);
-  background: var(--surface-2); font-size: 0.84rem; font-weight: 600; height: 100%;
-  transition: border-color 0.2s, background 0.2s;
-}
-.need-option label svg { width: 30px; height: 30px; color: var(--red); }
-.need-option input:checked + label { border-color: var(--red); background: rgba(193,2,6,0.12); }
-.need-option input:focus-visible + label { outline: 3px solid var(--focus); outline-offset: 2px; }
-
-.field { margin-bottom: 18px; }
-.field label { display: block; font-size: 0.86rem; font-weight: 700; margin-bottom: 8px; color: var(--text); }
-.field .req { color: var(--red); }
-.field input[type="text"], .field input[type="tel"], .field input[type="email"], .field select, .field textarea {
-  width: 100%; padding: 13px 16px; background: var(--surface-2); border: 1.5px solid var(--border);
-  border-radius: var(--radius-s); color: var(--text); font-size: 0.96rem; transition: border-color 0.2s;
-}
-.field input:focus, .field select:focus, .field textarea:focus { border-color: var(--red); outline: none; }
-.field textarea { min-height: 120px; resize: vertical; }
-.field-row { display: grid; gap: 18px; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); }
-.select-wrap { position: relative; }
-.select-wrap::after {
-  content: ""; position: absolute; right: 16px; top: 50%; width: 10px; height: 10px;
-  border-right: 2px solid var(--grey-mid); border-bottom: 2px solid var(--grey-mid);
-  transform: translateY(-70%) rotate(45deg); pointer-events: none;
-}
-.select-wrap select { appearance: none; }
-
-.checkbox-field { display: flex; gap: 12px; align-items: flex-start; }
-.checkbox-field input { width: 20px; height: 20px; flex-shrink: 0; margin-top: 2px; accent-color: var(--red); }
-.checkbox-field label { font-size: 0.84rem; color: var(--grey-light); font-weight: 400; }
-.checkbox-field a { color: var(--red); text-decoration: underline; }
-
-.form-msg { margin-top: 20px; padding: 16px 18px; border-radius: var(--radius-s); font-size: 0.92rem; display: none; }
-.form-msg.is-visible { display: flex; align-items: flex-start; gap: 10px; }
-.form-msg svg { width: 22px; height: 22px; flex-shrink: 0; }
-.form-msg.success { background: rgba(46,125,50,0.16); border: 1px solid #2e7d32; color: #a5d6a7; }
-.form-msg.error { background: rgba(193,2,6,0.14); border: 1px solid var(--red); color: #ffb3b3; }
-.form-msg.error a { color: #fff; text-decoration: underline; }
-
 .side-panel { display: flex; flex-direction: column; gap: 22px; position: sticky; top: calc(var(--header-h) + 20px); }
 .info-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-l); padding: 26px; }
 .info-card h2 { font-size: 1.1rem; margin-bottom: 18px; }

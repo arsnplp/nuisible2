@@ -1,7 +1,8 @@
 /*!
  * Nuisibles Secure — main.js
  * Aucune dépendance externe. Gère : menu mobile, sous-menus mobiles,
- * apparitions au scroll, et le(s) formulaire(s) (devis / contact).
+ * et les apparitions au scroll. Le contact se fait par téléphone (tel:)
+ * et WhatsApp (wa.me), aucun formulaire n'a besoin d'être géré ici.
  */
 (function () {
   "use strict";
@@ -72,70 +73,4 @@
     );
     revealEls.forEach(function (el) { io.observe(el); });
   }
-
-  /* -----------------------------------------------------------------------
-   * 4) Formulaire(s) — devis / contact
-   *
-   * BRANCHEMENT DU FORMULAIRE (1 seule ligne à modifier) :
-   * Remplacez la valeur de FORM_ENDPOINT ci-dessous par l'URL fournie par
-   * votre prestataire de formulaire statique, par exemple :
-   *   - Formspree   : "https://formspree.io/f/VOTRE_ID"
-   *   - Web3Forms   : "https://api.web3forms.com/submit"
-   * Tant que FORM_ENDPOINT est vide (""), le formulaire fonctionne en
-   * MODE DÉMO : aucune donnée n'est envoyée, un message de succès factice
-   * s'affiche simplement pour prévisualiser l'expérience utilisateur.
-   * --------------------------------------------------------------------- */
-  var FORM_ENDPOINT = "";
-
-  document.querySelectorAll("[data-ajax-form]").forEach(function (form) {
-    var successMsg = form.querySelector(".form-msg.success");
-    var errorMsg = form.querySelector(".form-msg.error");
-    var submitBtn = form.querySelector("[type=submit]");
-
-    form.addEventListener("submit", function (e) {
-      e.preventDefault();
-      if (successMsg) successMsg.classList.remove("is-visible");
-      if (errorMsg) errorMsg.classList.remove("is-visible");
-
-      if (!form.checkValidity()) {
-        form.reportValidity();
-        return;
-      }
-
-      if (!FORM_ENDPOINT) {
-        // Mode démo : pas d'appel réseau, on simule la réussite.
-        if (submitBtn) submitBtn.disabled = true;
-        setTimeout(function () {
-          if (successMsg) successMsg.classList.add("is-visible");
-          if (submitBtn) submitBtn.disabled = false;
-          form.reset();
-          if (successMsg) successMsg.scrollIntoView({ behavior: prefersReducedMotion ? "auto" : "smooth", block: "center" });
-        }, 400);
-        return;
-      }
-
-      if (submitBtn) submitBtn.disabled = true;
-      fetch(FORM_ENDPOINT, {
-        method: "POST",
-        headers: { Accept: "application/json" },
-        body: new FormData(form),
-      })
-        .then(function (response) {
-          if (response.ok) {
-            if (successMsg) successMsg.classList.add("is-visible");
-            form.reset();
-          } else {
-            if (errorMsg) errorMsg.classList.add("is-visible");
-          }
-        })
-        .catch(function () {
-          if (errorMsg) errorMsg.classList.add("is-visible");
-        })
-        .finally(function () {
-          if (submitBtn) submitBtn.disabled = false;
-          var target = errorMsg && errorMsg.classList.contains("is-visible") ? errorMsg : successMsg;
-          if (target) target.scrollIntoView({ behavior: prefersReducedMotion ? "auto" : "smooth", block: "center" });
-        });
-    });
-  });
 })();

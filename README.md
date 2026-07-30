@@ -4,9 +4,12 @@ Site vitrine statique (HTML / CSS / JS purs, sans framework ni dépendance exter
 entreprise d'extermination et de nettoyage basée à Chartres (28), intervenant en Eure-et-Loir et dans les
 Yvelines.
 
-Le site compte **41 pages HTML** (39 indexables + mentions légales + 404, plus un gabarit d'article
+Le site compte **40 pages HTML** (37 indexables + mentions légales + 404, plus un gabarit d'article
 technique non publié) générées à partir d'un jeu de données commun afin de garantir une structure, un
 maillage interne et une charte strictement identiques partout.
+
+**Aucun formulaire sur le site** : toute demande de devis passe par un appel téléphonique (`tel:`) ou par
+WhatsApp (`wa.me`), conformément au choix du client — voir §4.
 
 ---
 
@@ -18,9 +21,9 @@ Aucune installation n'est nécessaire (pas de `npm install`, pas de build). À l
 python3 -m http.server 8000
 ```
 
-Puis ouvrir `http://localhost:8000/`. Toutes les URLs sont en dossiers (`/devis/`, `/deratisation-dreux/`,
-etc.), ce qui fonctionne nativement avec n'importe quel serveur statique (Netlify, Vercel, OVH, o2switch,
-Apache, Nginx, GitHub Pages…).
+Puis ouvrir `http://localhost:8000/`. Toutes les URLs sont en dossiers (`/deratisation-dreux/`,
+`/punaises-de-lit-chartres/`, etc.), ce qui fonctionne nativement avec n'importe quel serveur statique
+(Netlify, Vercel, OVH, o2switch, Apache, Nginx, GitHub Pages…).
 
 ---
 
@@ -38,7 +41,6 @@ Apache, Nginx, GitHub Pages…).
 /nuisibles-copropriete-syndic-chartres/ ┘
 /deratisation-{ville}/         22 pages villes (voir liste §3)
 /zone-intervention/            hub des communes desservies
-/devis/                        formulaire de devis + coordonnées + carte
 /a-propos/                     page de confiance
 /blog/                         index du blog
 /blog/{article}/               3 articles
@@ -46,12 +48,15 @@ Apache, Nginx, GitHub Pages…).
 /mentions-legales/             noindex, follow
 /404.html                      page d'erreur personnalisée, noindex
 /sitemap.xml, /robots.txt
-/assets/css/style.css          feuille de style unique (~32 Ko)
-/assets/js/main.js             script unique (menu, scroll, formulaire)
+/assets/css/style.css          feuille de style unique (~29 Ko)
+/assets/js/main.js             script unique (menu mobile, apparitions au scroll)
 /assets/fonts/                 Anton + Montserrat, auto-hébergées en woff2
 /assets/img/                   images (voir tableau §5)
 /assets/favicons/               favicons générés depuis /logo/logonuisible2.png
 ```
+
+Il n'y a **pas de page « Devis »** : chaque CTA « Devis » du site ouvre directement soit l'appel
+téléphonique (`tel:`), soit une conversation WhatsApp pré-remplie (`wa.me`) — voir §4.
 
 ### Pourquoi pas de page « /nuisibles-chartres/ » dédiée ?
 Chartres est le siège de l'entreprise : l'accueil (`/`) porte déjà le mot-clé principal
@@ -90,30 +95,26 @@ Typographies auto-hébergées en woff2 (`assets/fonts/`, aucun appel à Google F
 - **Montserrat** variable 400-800 (texte courant) — `--font-body`
 
 Le site reprend volontairement l'univers du logo fourni (cercle, mire/crosshair, noir/rouge/blanc) : le
-schéma « zone d'intervention » (accueil, page Villes, page Devis) reprend ce motif de cible.
+schéma « zone d'intervention » (accueil, page Villes) reprend ce motif de cible.
 
 ---
 
-## 4. Brancher le formulaire de devis (1 ligne)
+## 4. Contact : téléphone & WhatsApp (pas de formulaire)
 
-Dans `assets/js/main.js`, ligne ~88 :
+Sur demande explicite du client, le site n'utilise **aucun formulaire** : chaque bouton « Devis » ouvre soit
+un appel téléphonique, soit une conversation WhatsApp pré-remplie. Cela concerne le header, la barre mobile
+fixe, le menu mobile, le footer et tous les encarts d'appel à l'action des pages.
 
-```js
-var FORM_ENDPOINT = "";
-```
+Le numéro utilisé pour WhatsApp est le numéro de téléphone de l'entreprise, au format international sans
+espaces : **`33768495393`**. Les liens `tel:` et `https://wa.me/...` sont écrits en dur dans chaque page
+HTML (pas de JavaScript nécessaire : `main.js` ne gère plus que le menu mobile et les apparitions au scroll).
 
-Tant que cette valeur est vide, le formulaire fonctionne en **mode démo** (le message de succès s'affiche,
-rien n'est envoyé). Pour le connecter réellement, remplacer par l'URL fournie par votre prestataire, par
-exemple :
+**⚠️ Avant mise en ligne**, vérifier que WhatsApp Business est bien activé sur ce numéro (`07 68 49 53 93`) —
+sinon le lien `https://wa.me/33768495393` n'aboutira à aucune conversation. Si un numéro WhatsApp différent
+doit être utilisé, remplacer `33768495393` par le bon numéro (format international, sans « + » ni espaces)
+dans **tous** les fichiers `.html` (recherche/remplacement global sur `wa.me/33768495393`).
 
-```js
-var FORM_ENDPOINT = "https://formspree.io/f/VOTRE_ID";   // Formspree
-// ou
-var FORM_ENDPOINT = "https://api.web3forms.com/submit";  // Web3Forms (ajouter votre access_key en input hidden)
-```
-
-Le formulaire (`/devis/`) envoie les champs : `besoin`, `urgence`, `nom`, `telephone`, `email`, `ville`,
-`message`, `rgpd`.
+Le message pré-rempli envoyé est : *« Bonjour, je souhaite un devis gratuit pour une intervention. »*
 
 ---
 
@@ -192,7 +193,8 @@ Toute information non fournie dans le brief est signalée par un texte **entre c
 visible sur le site (jamais inventée). Récapitulatif :
 
 - **Adresse postale exacte** du siège (actuellement « [Adresse précise à compléter], 28000 Chartres »,
-  utilisée dans le NAP du footer, la page Devis et le JSON-LD `LocalBusiness`).
+  utilisée dans le NAP du footer et le JSON-LD `LocalBusiness`).
+- **Numéro WhatsApp Business** : à activer/confirmer sur le `07 68 49 53 93` (voir §4) avant mise en ligne.
 - **Réseaux sociaux / fiche Google Business** : liens Facebook/Instagram en footer pointent vers `#`.
 - **Avis clients** : aucune citation réelle ni note Google n'ayant été fournie, la section « Avis clients »
   de l'accueil affiche 3 cartes explicitement marquées `[Avis client à compléter]` plutôt que des faux
@@ -214,18 +216,18 @@ visible sur le site (jamais inventée). Récapitulatif :
 ## 9. SEO on-page réalisé
 
 - 1 `<h1>` unique par page, titres ≤ 65 caractères, meta descriptions 140-160 caractères avec téléphone —
-  **vérifié programmatiquement sur les 41 pages** (voir §10).
+  **vérifié programmatiquement sur les 40 pages** (voir §10).
 - `rel="canonical"` absolu + Open Graph complet + Twitter Card sur chaque page ; `og-image.jpg` 1200×630.
 - JSON-LD en `@graph` : `LocalBusiness` + `WebSite` + `FAQPage` sur l'accueil ; `Service` + `BreadcrumbList`
   + `FAQPage` sur les pages prestation et ville ; `BlogPosting` sur les articles. Aucun `aggregateRating`
   auto-proclamé.
-- Maillage interne complet : footer (prestations, villes, NAP), pages prestation ↔ pages ville ↔ blog ↔
-  devis, fil d'Ariane + `BreadcrumbList` sur toutes les pages internes.
-- `sitemap.xml` (38 URLs indexables, priorités différenciées) + `robots.txt`.
+- Maillage interne complet : footer (prestations, villes, NAP), pages prestation ↔ pages ville ↔ blog,
+  fil d'Ariane + `BreadcrumbList` sur toutes les pages internes, boutons d'appel/WhatsApp répétés partout.
+- `sitemap.xml` (37 URLs indexables, priorités différenciées) + `robots.txt`.
 
 ## 10. Contrôle qualité effectué
 
-Un script de contrôle a été exécuté sur les 41 pages générées et vérifie automatiquement :
+Un script de contrôle a été exécuté sur les 40 pages générées et vérifie automatiquement :
 - présence et longueur du `<title>` et de la meta description ;
 - unicité du `<h1>` ;
 - présence du canonical et de `lang="fr"` ;
@@ -233,9 +235,9 @@ Un script de contrôle a été exécuté sur les 41 pages générées et vérifi
 - existence réelle de **chaque** lien interne et de **chaque** image référencée (`href`/`src`) ;
 - présence de `width`/`height`/`alt` sur chaque `<img>`.
 
-**Résultat : aucune erreur.** Un serveur local (`python3 -m http.server`) a ensuite été lancé et 50 URLs
-(pages + assets clés) ont toutes répondu **200**. Une vérification croisée (téléphone, e-mail, nom de
-marque) confirme l'absence d'incohérence ou de résidu d'un autre métier/ville dans les 41 pages.
+**Résultat : aucune erreur.** Un serveur local (`python3 -m http.server`) a ensuite été lancé et l'ensemble
+des pages et des assets clés ont répondu **200**. Une vérification croisée (téléphone, e-mail, nom de
+marque) confirme l'absence d'incohérence ou de résidu d'un autre métier/ville dans les 40 pages.
 
 ---
 
