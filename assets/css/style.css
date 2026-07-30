@@ -267,12 +267,12 @@ section { padding-block: clamp(48px, 8vw, 96px); }
 .hero-overlay {
   position: absolute; inset: 0; z-index: 1;
   background:
-    linear-gradient(90deg, rgba(0,0,0,0.92) 0%, rgba(0,0,0,0.78) 42%, rgba(0,0,0,0.42) 75%, rgba(0,0,0,0.6) 100%),
-    linear-gradient(0deg, rgba(0,0,0,0.55), transparent 40%),
-    radial-gradient(ellipse 900px 500px at 90% 0%, rgba(193,2,6,0.28), transparent 60%);
+    linear-gradient(90deg, rgba(0,0,0,0.66) 0%, rgba(0,0,0,0.5) 42%, rgba(0,0,0,0.2) 75%, rgba(0,0,0,0.38) 100%),
+    linear-gradient(0deg, rgba(0,0,0,0.4), transparent 40%),
+    radial-gradient(ellipse 900px 500px at 90% 0%, rgba(193,2,6,0.22), transparent 60%);
 }
-.hero .container { position: relative; z-index: 2; }
-.hero-copy { max-width: 840px; }
+.hero .container { position: relative; z-index: 2; max-width: 1600px; }
+.hero-copy { max-width: 1040px; }
 .hero-copy .badge-line {
   display: flex; flex-wrap: nowrap; gap: 8px; margin-bottom: 18px;
   overflow-x: auto; scrollbar-width: none; -ms-overflow-style: none; margin-inline: -2px; padding: 2px;
@@ -286,8 +286,8 @@ section { padding-block: clamp(48px, 8vw, 96px); }
 }
 .hero-copy .badge-line svg { width: 14px; height: 14px; color: var(--red); flex-shrink: 0; }
 .hero h1 {
-  max-width: 25ch; text-shadow: 0 2px 18px rgba(0,0,0,0.6);
-  font-size: clamp(2.6rem, 6.2vw, 4.6rem);
+  max-width: 40ch; text-shadow: 0 2px 18px rgba(0,0,0,0.6);
+  font-size: clamp(2.6rem, 5.6vw, 4.4rem);
 }
 .hero h1 em { font-style: normal; color: var(--red); }
 @media (max-width: 480px) {
