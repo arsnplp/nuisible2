@@ -189,7 +189,7 @@ section { padding-block: clamp(48px, 8vw, 96px); }
 .brand-text .l2 { display: block; font-size: 1.05rem; color: var(--red); }
 
 .main-nav { display: none; }
-.main-nav ul { display: flex; align-items: center; gap: 4px; }
+.main-nav > ul { display: flex; align-items: center; gap: 4px; }
 .main-nav a {
   display: block; padding: 10px 14px; font-size: 0.92rem; font-weight: 600;
   border-radius: var(--radius-s); transition: color 0.2s, background 0.2s;
@@ -198,6 +198,7 @@ section { padding-block: clamp(48px, 8vw, 96px); }
 .main-nav a[aria-current="page"] { color: var(--red); }
 .has-dropdown { position: relative; }
 .dropdown {
+  display: flex; flex-direction: column; gap: 2px;
   position: absolute; top: calc(100% + 6px); right: 0; min-width: 280px; max-width: min(280px, 90vw);
   background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-m);
   padding: 10px; box-shadow: var(--shadow-2); opacity: 0; visibility: hidden;
