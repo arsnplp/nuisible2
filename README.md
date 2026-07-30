@@ -89,6 +89,11 @@ Variables CSS dans `assets/css/style.css` (`:root`) :
 | Texte principal | `--white` | `#FFFFFF` |
 | Texte secondaire | `--grey-light` | `#D9D9D9` |
 | Bordures | `--grey-dark` | `#2E2E2E` |
+| Vert WhatsApp (boutons WhatsApp uniquement) | `--whatsapp` | `#25D366` |
+
+Le vert `--whatsapp` est une exception volontaire à la charte noir/rouge/blanc, réservée **exclusivement**
+aux boutons qui ouvrent WhatsApp (`.btn-whatsapp`) : c'est la couleur de reconnaissance immédiate de l'app,
+ce qui aide l'utilisateur à distinguer en un coup d'œil « appeler » (rouge) de « écrire sur WhatsApp » (vert).
 
 Typographies auto-hébergées en woff2 (`assets/fonts/`, aucun appel à Google Fonts en ligne) :
 - **Anton** (titres, majuscules condensées) — `--font-display`
@@ -130,7 +135,6 @@ charte, avec le nom de fichier final et les dimensions écrites dessus. Pour les
 
 | Fichier placeholder actuel | Nom de fichier final attendu | Description de la photo à fournir | Dimensions | Page(s) |
 |---|---|---|---|---|
-| `hero-accueil.svg` | `hero-accueil.jpg` | Intervention en cours ou façade à Chartres | 1600×900 | Accueil (hero) |
 | `photo-deratisation.svg` | `photo-deratisation.jpg` | Pose d'appât/piège professionnel | 800×600 | Dératisation |
 | `photo-punaises-de-lit.svg` | `photo-punaises-de-lit.jpg` | Traitement literie / matelas | 800×600 | Punaises de lit |
 | `photo-guepes-frelons.svg` | `photo-guepes-frelons.jpg` | Retrait nid de guêpes/frelons | 800×600 | Guêpes & frelons |
@@ -152,6 +156,22 @@ Le **logo** (`assets/img/logo.webp`, favicons dans `assets/favicons/`, image Ope
 Les 22 pages villes n'ont volontairement **pas** de photo dédiée (aucune photo spécifique par commune
 n'étant réaliste) : leur en-tête utilise un habillage graphique (dégradé + motif), pas une photo. Vous
 pouvez en ajouter une plus tard si vous disposez de vraies photos locales.
+
+### Vidéo de fond du hero (accueil)
+
+Le hero de l'accueil utilise une vidéo en fond plein cadre plutôt qu'une photo statique :
+`assets/video/hero-punaises-de-lit.mp4` (fournie par le client, compressée sans son : ~956 Ko pour 10 s en
+boucle, H.264 + `faststart`), avec `assets/video/hero-poster.jpg` comme image affichée avant chargement.
+Elle est masquée automatiquement si l'utilisateur a activé « réduire les animations » dans son système
+(`prefers-reduced-motion`).
+
+Pour la remplacer par une autre vidéo :
+1. Compresser la nouvelle vidéo sans son, idéalement < 1,5 Mo pour une boucle de 8-12 s (ex. avec `ffmpeg
+   -an -c:v libx264 -crf 26 -movflags +faststart`).
+2. L'enregistrer dans `/assets/video/` et mettre à jour le nom de fichier dans la balise `<source>` du
+   `<video class="hero-bg-video">` sur `index.html`.
+3. Générer une nouvelle image `hero-poster.jpg` (première image de la vidéo) et l'utiliser en attribut
+   `poster`.
 
 ---
 

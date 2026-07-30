@@ -73,4 +73,14 @@
     );
     revealEls.forEach(function (el) { io.observe(el); });
   }
+
+  /* -----------------------------------------------------------------------
+   * 4) Vidéo de fond du hero : coupée si l'utilisateur préfère moins
+   *    d'animations (économie de ressources, la CSS la masque déjà).
+   * --------------------------------------------------------------------- */
+  var heroVideo = document.querySelector(".hero-bg-video");
+  if (heroVideo && prefersReducedMotion) {
+    heroVideo.pause();
+    heroVideo.removeAttribute("autoplay");
+  }
 })();
