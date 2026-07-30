@@ -81,8 +81,8 @@ body {
   overflow-x: hidden;
   padding-bottom: var(--mobile-bar-h);
 }
-img, svg { display: block; max-width: 100%; }
-img { height: auto; }
+img { display: block; max-width: 100%; height: auto; }
+svg { display: inline-block; vertical-align: middle; max-width: 100%; }
 svg { width: 20px; height: 20px; flex-shrink: 0; }
 svg.icon-xs { width: 14px; height: 14px; }
 svg.icon-s { width: 17px; height: 17px; }
