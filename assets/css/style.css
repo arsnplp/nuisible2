@@ -195,7 +195,7 @@ section { padding-block: clamp(48px, 8vw, 96px); }
 .main-nav { display: none; }
 .main-nav > ul { display: flex; align-items: center; gap: 4px; }
 .main-nav a {
-  display: block; padding: 10px 14px; font-size: 0.92rem; font-weight: 600;
+  display: inline-flex; align-items: center; gap: 6px; padding: 10px 14px; font-size: 0.92rem; font-weight: 600;
   border-radius: var(--radius-s); transition: color 0.2s, background 0.2s;
 }
 .main-nav a:hover, .main-nav a[aria-current="page"] { color: var(--white); background: var(--surface); }
