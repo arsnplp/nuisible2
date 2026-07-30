@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-label="Emplacement photo a fournir : Intervention en cours ou facade Chartres">
+  <defs>
+    <pattern id="diag-0" width="26" height="26" patternTransform="rotate(45)" patternUnits="userSpaceOnUse">
+      <rect width="26" height="26" fill="#141414"/>
+      <line x1="0" y1="0" x2="0" y2="26" stroke="#0A0A0A" stroke-width="13"/>
+    </pattern>
+  </defs>
+  <rect width="1600" height="900" fill="url(#diag-0)"/>
+  <rect x="6" y="6" width="1588" height="888" fill="none" stroke="#2E2E2E" stroke-width="3" stroke-dasharray="14 10"/>
+  <g transform="translate(800.0,324.0)">
+    <rect x="-58" y="-38" width="116" height="80" rx="10" fill="none" stroke="#C10206" stroke-width="6"/>
+    <rect x="-24" y="-58" width="48" height="20" rx="4" fill="none" stroke="#C10206" stroke-width="6"/>
+    <circle cx="0" cy="4" r="26" fill="none" stroke="#C10206" stroke-width="6"/>
+    <circle cx="0" cy="4" r="10" fill="#C10206"/>
+    <line x1="-70" y1="52" x2="70" y2="-50" stroke="#8F0005" stroke-width="5" opacity="0.9"/>
+  </g>
+  <text x="800.0" y="558.0" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-weight="700" font-size="48" letter-spacing="2" fill="#FFFFFF">PHOTO A REMPLACER</text>
+  <text x="800.0" y="630.0" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-weight="400" font-size="32" fill="#D9D9D9">Intervention en cours ou facade Chartres</text>
+  <text x="800.0" y="720.0" text-anchor="middle" font-family="'Courier New', monospace" font-weight="700" font-size="36" fill="#C10206">hero-accueil.jpg</text>
+  <text x="800.0" y="792.0" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-weight="400" font-size="28" fill="#8a8a8a">Dimensions recommandees : 1600x900 px</text>
+</svg>
