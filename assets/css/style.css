@@ -303,7 +303,7 @@ section { padding-block: clamp(48px, 8vw, 96px); }
 
 /* Hero secondaire (pages internes) */
 .page-hero {
-  min-height: clamp(340px, 42vw, 440px);
+  min-height: clamp(300px, 44vw, 600px);
   padding-block: clamp(28px, 5vw, 48px);
   display: flex; align-items: center;
   background: linear-gradient(180deg, var(--black-soft), var(--black));
