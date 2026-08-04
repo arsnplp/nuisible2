@@ -271,7 +271,7 @@ section { padding-block: clamp(48px, 8vw, 96px); }
     linear-gradient(0deg, rgba(0,0,0,0.4), transparent 40%),
     radial-gradient(ellipse 900px 500px at 90% 0%, rgba(193,2,6,0.22), transparent 60%);
 }
-.hero .container { position: relative; z-index: 2; max-width: 1600px; }
+.hero .container { position: relative; z-index: 2; max-width: 1600px; width: 100%; }
 .hero-copy { max-width: 1040px; }
 .hero-copy .badge-line {
   display: flex; flex-wrap: nowrap; gap: 8px; margin-bottom: 18px;
@@ -322,7 +322,7 @@ section { padding-block: clamp(48px, 8vw, 96px); }
     radial-gradient(circle 520px at 90% -10%, rgba(193,2,6,0.16), transparent 60%);
 }
 .page-hero.has-photo h1 { text-shadow: 0 2px 16px rgba(0,0,0,0.55); }
-.page-hero .container { position: relative; z-index: 2; }
+.page-hero .container { position: relative; z-index: 2; max-width: 1600px; width: 100%; }
 .page-hero h1 { max-width: 24ch; }
 .page-hero .hero-sub { color: var(--grey-light); }
 @media (max-width: 640px) { .page-hero .hero-sub { display: none; } }
