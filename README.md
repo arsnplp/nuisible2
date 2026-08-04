@@ -142,11 +142,18 @@ Le **logo** (`assets/img/logo.webp`, favicons dans `assets/favicons/`, image Ope
 `assets/img/og-image.jpg`) a en revanche été généré à partir du vrai fichier fourni
 (`/logo/logonuisible2.png`) — aucune action requise sauf si le logo change.
 
-**Blog et pages prestation : pas d'image, sur demande du client.** Les articles de blog et le corps des
-pages prestation n'affichent aucune photo (ni cover d'article, ni vignette dans les cartes du blog, ni photo
-au milieu de l'article prestation — ces gabarits ont été retirés). Le client ajoutera lui-même une photo
-dans l'en-tête (`page-hero`) de chaque page prestation une fois ses propres visuels prêts ; il suffira
-d'ajouter un `<img>` dans la section `<section class="page-hero">` du fichier concerné.
+**Blog : pas d'image, sur demande du client.** Les articles de blog n'affichent aucune photo (ni cover
+d'article, ni vignette dans les cartes du blog).
+
+**Pages prestation : photo en fond de l'en-tête.** Les 8 pages prestation utilisent chacune une photo
+fournie par le client en fond plein cadre de leur `page-hero` (dégradé sombre superposé pour la lisibilité
+du texte, même traitement que la vidéo de l'accueil) : fichiers dans `assets/img/headers/`
+(`header-deratisation.jpg`, `header-punaises-de-lit.jpg`, `header-guepes-frelons.jpg`,
+`header-cafards-blattes.jpg`, `header-depigeonnage.jpg`, `header-desinfection.jpg`, `header-haccp.jpg`,
+`header-copropriete.jpg`), compressées en JPG < 210 Ko. Les fichiers sources originaux (PNG, dossier
+`/imagepresta/`) sont conservés en local mais exclus du dépôt Git (`.gitignore`). Pour remplacer une de ces
+photos : enregistrer la nouvelle image sous le même nom dans `assets/img/headers/`, en respectant un ratio
+proche de 16:9 et une largeur ≥ 1600 px pour rester net sur grand écran.
 
 Les 22 pages villes n'ont volontairement **pas** de photo dédiée (aucune photo spécifique par commune
 n'étant réaliste) : leur en-tête utilise un habillage graphique (dégradé + motif), pas une photo. Vous
