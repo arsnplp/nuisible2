@@ -135,23 +135,18 @@ charte, avec le nom de fichier final et les dimensions écrites dessus. Pour les
 
 | Fichier placeholder actuel | Nom de fichier final attendu | Description de la photo à fournir | Dimensions | Page(s) |
 |---|---|---|---|---|
-| `photo-deratisation.svg` | `photo-deratisation.jpg` | Pose d'appât/piège professionnel | 800×600 | Dératisation |
-| `photo-punaises-de-lit.svg` | `photo-punaises-de-lit.jpg` | Traitement literie / matelas | 800×600 | Punaises de lit |
-| `photo-guepes-frelons.svg` | `photo-guepes-frelons.jpg` | Retrait nid de guêpes/frelons | 800×600 | Guêpes & frelons |
-| `photo-cafards-blattes.svg` | `photo-cafards-blattes.jpg` | Application gel professionnel | 800×600 | Cafards & blattes |
-| `photo-depigeonnage.svg` | `photo-depigeonnage.jpg` | Pose de pics anti-pigeons en façade | 800×600 | Dépigeonnage |
-| `photo-desinfection.svg` | `photo-desinfection.jpg` | Technicien en tenue, pulvérisation | 800×600 | Désinfection & nettoyage |
-| `photo-haccp.svg` | `photo-haccp.jpg` | Contrôle en cuisine professionnelle | 800×600 | Contrats HACCP |
-| `photo-copropriete.svg` | `photo-copropriete.jpg` | Local poubelles / parties communes | 800×600 | Copropriétés & syndics |
 | `equipe.svg` | `equipe.jpg` | Portrait de l'artisan ou de l'équipe | 800×800 | À propos |
 | `vehicule.svg` | `vehicule.jpg` | Véhicule d'intervention | 800×600 | À propos |
-| `blog-punaises-guide.svg` | `blog-punaises-guide.jpg` | Image article punaises de lit | 1200×675 | Blog |
-| `blog-rats-erreurs.svg` | `blog-rats-erreurs.jpg` | Image article rats/souris | 1200×675 | Blog |
-| `blog-prix-deratisation.svg` | `blog-prix-deratisation.jpg` | Image article tarifs | 1200×675 | Blog |
 
 Le **logo** (`assets/img/logo.webp`, favicons dans `assets/favicons/`, image Open Graph
 `assets/img/og-image.jpg`) a en revanche été généré à partir du vrai fichier fourni
 (`/logo/logonuisible2.png`) — aucune action requise sauf si le logo change.
+
+**Blog et pages prestation : pas d'image, sur demande du client.** Les articles de blog et le corps des
+pages prestation n'affichent aucune photo (ni cover d'article, ni vignette dans les cartes du blog, ni photo
+au milieu de l'article prestation — ces gabarits ont été retirés). Le client ajoutera lui-même une photo
+dans l'en-tête (`page-hero`) de chaque page prestation une fois ses propres visuels prêts ; il suffira
+d'ajouter un `<img>` dans la section `<section class="page-hero">` du fichier concerné.
 
 Les 22 pages villes n'ont volontairement **pas** de photo dédiée (aucune photo spécifique par commune
 n'étant réaliste) : leur en-tête utilise un habillage graphique (dégradé + motif), pas une photo. Vous
