@@ -83,4 +83,32 @@
     heroVideo.pause();
     heroVideo.removeAttribute("autoplay");
   }
+
+  /* -----------------------------------------------------------------------
+   * 5) Thème clair / sombre (mémorisé dans localStorage)
+   * --------------------------------------------------------------------- */
+  var THEME_KEY = "nuisibles-theme";
+  var themeToggle = document.querySelector("[data-theme-toggle]");
+
+  if (themeToggle) {
+    var setPressed = function () {
+      themeToggle.setAttribute(
+        "aria-pressed",
+        String(document.documentElement.getAttribute("data-theme") === "light")
+      );
+    };
+    setPressed();
+
+    themeToggle.addEventListener("click", function () {
+      var isLight = document.documentElement.getAttribute("data-theme") === "light";
+      var next = isLight ? "dark" : "light";
+      if (next === "light") {
+        document.documentElement.setAttribute("data-theme", "light");
+      } else {
+        document.documentElement.removeAttribute("data-theme");
+      }
+      try { localStorage.setItem(THEME_KEY, next); } catch (e) {}
+      setPressed();
+    });
+  }
 })();

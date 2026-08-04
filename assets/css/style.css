@@ -21,11 +21,14 @@
 
 /* --- Variables de charte ------------------------------------------------ */
 :root {
-  /* Couleurs de marque */
+  /* Couleurs de marque (fixes, ne changent pas avec le thème) */
   --red: #c10206;
   --red-dark: #8f0005;
   --whatsapp: #1da851;
   --whatsapp-dark: #168542;
+  --on-brand: #ffffff; /* texte/icônes sur bouton plein rouge ou vert */
+
+  /* Palette (thème sombre = valeurs par défaut) */
   --black: #000000;
   --black-soft: #0a0a0a;
   --surface: #131313;
@@ -34,6 +37,7 @@
   --grey-light: #d9d9d9;
   --grey-mid: #9a9a9a;
   --grey-dark: #2e2e2e;
+  --header-bg: rgba(0, 0, 0, 0.92);
 
   /* Rôles sémantiques */
   --bg: var(--black);
@@ -59,6 +63,21 @@
   --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
   --header-h: 76px;
   --mobile-bar-h: 62px;
+}
+
+/* --- Thème clair ----------------------------------------------------------- */
+:root[data-theme="light"] {
+  --black: #f7f7f8;
+  --black-soft: #eeeef0;
+  --surface: #ffffff;
+  --surface-2: #e9e9ec;
+  --white: #16161a;
+  --grey-light: #4b4b52;
+  --grey-mid: #75757c;
+  --grey-dark: #e0e0e4;
+  --header-bg: rgba(255, 255, 255, 0.92);
+  --shadow-1: 0 2px 0 rgba(0, 0, 0, 0.08);
+  --shadow-2: 0 18px 40px -18px rgba(193, 2, 6, 0.22), 0 4px 14px rgba(0, 0, 0, 0.12);
 }
 
 /* --- Reset ---------------------------------------------------------------- */
@@ -151,14 +170,14 @@ section { padding-block: clamp(48px, 8vw, 96px); }
   white-space: nowrap;
 }
 .btn svg { width: 20px; height: 20px; flex-shrink: 0; }
-.btn-primary { background: var(--red); color: var(--white); box-shadow: var(--shadow-1); }
+.btn-primary { background: var(--red); color: var(--on-brand); box-shadow: var(--shadow-1); }
 .btn-primary:hover { background: #e40308; transform: translateY(-2px); }
-.btn-whatsapp { background: var(--whatsapp); color: var(--white); box-shadow: var(--shadow-1); }
+.btn-whatsapp { background: var(--whatsapp); color: var(--on-brand); box-shadow: var(--shadow-1); }
 .btn-whatsapp:hover { background: var(--whatsapp-dark); transform: translateY(-2px); }
 .btn-outline { background: transparent; color: var(--white); border-color: var(--grey-dark); }
 .btn-outline:hover { border-color: var(--white); transform: translateY(-2px); }
-.btn-white { background: var(--white); color: var(--black); }
-.btn-white:hover { background: var(--grey-light); transform: translateY(-2px); }
+.btn-white { background: #ffffff; color: #141414; }
+.btn-white:hover { background: #e6e6e6; transform: translateY(-2px); }
 .btn-block { width: 100%; }
 .btn-lg { min-height: 56px; padding: 14px 32px; font-size: 1.05rem; }
 .btn:active { transform: translateY(0); }
@@ -182,7 +201,7 @@ section { padding-block: clamp(48px, 8vw, 96px); }
 
 .site-header {
   position: sticky; top: 0; z-index: 100; height: var(--header-h);
-  background: rgba(0,0,0,0.92); backdrop-filter: saturate(140%) blur(6px);
+  background: var(--header-bg); backdrop-filter: saturate(140%) blur(6px);
   border-bottom: 1px solid var(--border);
 }
 .site-header .container { height: 100%; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
@@ -213,6 +232,17 @@ section { padding-block: clamp(48px, 8vw, 96px); }
 
 .header-actions { display: flex; align-items: center; gap: 10px; }
 .header-actions .btn { display: none; }
+.theme-toggle {
+  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+  width: 46px; height: 46px; border: 1px solid var(--border); border-radius: var(--radius-s);
+  background: transparent; color: var(--white); cursor: pointer; transition: background 0.2s, border-color 0.2s;
+}
+.theme-toggle:hover { background: var(--surface); border-color: var(--grey-mid); }
+.theme-toggle:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
+.theme-toggle svg { width: 19px; height: 19px; }
+.theme-toggle .icon-moon { display: none; }
+:root[data-theme="light"] .theme-toggle .icon-sun { display: none; }
+:root[data-theme="light"] .theme-toggle .icon-moon { display: block; }
 .burger {
   display: flex; flex-direction: column; justify-content: center; align-items: center;
   gap: 5px; width: 46px; height: 46px; border: 1px solid var(--border); border-radius: var(--radius-s);
@@ -256,6 +286,17 @@ section { padding-block: clamp(48px, 8vw, 96px); }
 
 /* --- Hero (vidéo plein cadre) ---------------------------------------------- */
 .hero {
+  /* Le texte reste clair quel que soit le thème : il repose sur un dégradé
+     sombre fixe posé sur la vidéo, pas sur le fond de page. --text hérite
+     normalement d'une valeur déjà calculée à la racine, donc on le
+     réécrit ici aussi, pas seulement --white. */
+  --white: #ffffff;
+  --grey-light: #e2e2e4;
+  --grey-mid: #c7c7ca;
+  --border: rgba(217, 217, 217, 0.28);
+  --text: #ffffff;
+  --text-muted: #e2e2e4;
+  color: var(--text);
   position: relative; overflow: hidden; padding-block: clamp(64px, 16vw, 160px);
   background: var(--black);
   border-bottom: 1px solid var(--border);
@@ -310,6 +351,19 @@ section { padding-block: clamp(48px, 8vw, 96px); }
   border-bottom: 1px solid var(--border);
   position: relative; overflow: hidden;
 }
+.page-hero.has-photo {
+  /* Texte fixe clair : il repose sur un dégradé sombre posé sur la photo,
+     pas sur le fond de page (indépendant du thème clair/sombre). --text
+     hérite d'une valeur déjà calculée à la racine, donc on le réécrit
+     ici aussi, pas seulement --white. */
+  --white: #ffffff;
+  --grey-light: #e2e2e4;
+  --grey-mid: #c7c7ca;
+  --border: rgba(217, 217, 217, 0.28);
+  --text: #ffffff;
+  --text-muted: #e2e2e4;
+  color: var(--text);
+}
 .page-hero::after {
   content: ""; position: absolute; inset: 0; pointer-events: none; z-index: 1;
   background: radial-gradient(circle 520px at 90% -10%, rgba(193,2,6,0.22), transparent 60%);
@@ -333,12 +387,11 @@ section { padding-block: clamp(48px, 8vw, 96px); }
 
 /* --- Bandeau urgence ------------------------------------------------------ */
 .band-urgence {
-  background: var(--red); color: var(--white); padding-block: 18px;
+  background: var(--red); color: var(--on-brand); padding-block: 18px;
 }
 .band-urgence .container { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 16px; text-align: center; }
 .band-urgence p { color: rgba(255,255,255,0.92); font-weight: 600; }
-.band-urgence strong { color: var(--white); }
-.band-urgence .btn-white:hover { background: var(--grey-light); }
+.band-urgence strong { color: var(--on-brand); }
 
 /* --- Cards grid ------------------------------------------------------------ */
 .grid { display: grid; gap: 22px; }
@@ -501,7 +554,7 @@ section { padding-block: clamp(48px, 8vw, 96px); }
 }
 .mobile-cta-bar svg { width: 20px; height: 20px; }
 .mobile-cta-bar .call { background: var(--white); color: var(--black); }
-.mobile-cta-bar .devis { background: var(--whatsapp); color: var(--white); }
+.mobile-cta-bar .devis { background: var(--whatsapp); color: var(--on-brand); }
 @media (min-width: 1220px) { .mobile-cta-bar { display: none; } }
 
 /* --- Scroll reveal -------------------------------------------------------------- */
