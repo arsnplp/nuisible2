@@ -123,20 +123,18 @@ Le message pré-rempli envoyé est : *« Bonjour, je souhaite un devis gratuit p
 
 ---
 
-## 5. Remplacer les images (gabarits SVG → photos réelles)
+## 5. Photos & images
 
-Aucune photo n'ayant été fournie, chaque emplacement affiche un **gabarit SVG** généré aux couleurs de la
-charte, avec le nom de fichier final et les dimensions écrites dessus. Pour les remplacer :
+Il n'y a plus aucun gabarit SVG « photo à remplacer » sur le site : chaque page utilise soit une vraie
+photo fournie par le client, soit aucune photo (choix volontaire), comme détaillé ci-dessous.
 
-1. Prendre/sélectionner la photo réelle, aux dimensions indiquées (JPG ou WebP, < 300 Ko).
-2. L'enregistrer dans `/assets/img/` sous le **nom de fichier final** de la colonne ci-dessous.
-3. Dans le(s) fichier(s) HTML concerné(s), remplacer `nom-fichier.svg` par `nom-fichier.jpg` (ou `.webp`)
-   dans l'attribut `src` de la balise `<img>`.
-
-| Fichier placeholder actuel | Nom de fichier final attendu | Description de la photo à fournir | Dimensions | Page(s) |
-|---|---|---|---|---|
-| `equipe.svg` | `equipe.jpg` | Portrait de l'artisan ou de l'équipe | 800×800 | À propos |
-| `vehicule.svg` | `vehicule.jpg` | Véhicule d'intervention | 800×600 | À propos |
+**À propos** : plus de photo. La page affiche à la place, dans la colonne libérée à côté de « Certifications
+&amp; assurances », une carte **« Nous trouver »** (adresse, téléphone, horaires, bouton *Itinéraire* qui
+ouvre Google Maps dans un nouvel onglet — simple lien sortant, aucun script ni iframe embarqué). Le bouton
+utilise pour l'instant `Nuisibles Secure 28000 Chartres` comme requête de recherche puisque l'adresse
+précise n'a pas été fournie ; une fois l'adresse exacte connue, mettre à jour l'URL du bouton
+(`https://www.google.com/maps/search/?api=1&query=...`) avec l'adresse complète pour un itinéraire précis
+à la porte près, en plus de remplacer le texte `[Adresse précise à compléter]`.
 
 Le **logo** (`assets/img/logo.webp`, favicons dans `assets/favicons/`, image Open Graph
 `assets/img/og-image.jpg`) a en revanche été généré à partir du vrai fichier fourni
@@ -215,7 +213,8 @@ Toute information non fournie dans le brief est signalée par un texte **entre c
 visible sur le site (jamais inventée). Récapitulatif :
 
 - **Adresse postale exacte** du siège (actuellement « [Adresse précise à compléter], 28000 Chartres »,
-  utilisée dans le NAP du footer et le JSON-LD `LocalBusiness`).
+  utilisée dans le NAP du footer, la carte « Nous trouver » de la page À propos et le JSON-LD
+  `LocalBusiness`) — voir §5 pour mettre à jour le lien Google Maps une fois l'adresse connue.
 - **Numéro WhatsApp Business** : à activer/confirmer sur le `07 68 49 53 93` (voir §4) avant mise en ligne.
 - **Réseaux sociaux / fiche Google Business** : liens Facebook/Instagram en footer pointent vers `#`.
 - **Avis clients** : aucune citation réelle ni note Google n'ayant été fournie, la section « Avis clients »

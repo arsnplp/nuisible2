@@ -454,6 +454,8 @@ section { padding-block: clamp(48px, 8vw, 96px); }
 /* --- Mise en page prose + sidebar (pages prestation / ville) ----------------- */
 .devis-layout { display: grid; gap: 32px; }
 @media (min-width: 980px) { .devis-layout { grid-template-columns: 1.5fr 1fr; align-items: start; } }
+.split-2 { display: grid; gap: 32px; }
+@media (min-width: 860px) { .split-2 { grid-template-columns: 1fr 1fr; align-items: start; } }
 .side-panel { display: flex; flex-direction: column; gap: 22px; position: sticky; top: calc(var(--header-h) + 20px); }
 .info-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-l); padding: 26px; }
 .info-card h2 { font-size: 1.1rem; margin-bottom: 18px; }
