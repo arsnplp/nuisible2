@@ -4,7 +4,7 @@ Site vitrine statique (HTML / CSS / JS purs, sans framework ni dépendance exter
 entreprise d'extermination et de nettoyage basée à Chartres (28), intervenant en Eure-et-Loir et dans les
 Yvelines.
 
-Le site compte **40 pages HTML** (37 indexables + mentions légales + 404, plus un gabarit d'article
+Le site compte **41 pages HTML** (38 indexables + mentions légales + 404, plus un gabarit d'article
 technique non publié) générées à partir d'un jeu de données commun afin de garantir une structure, un
 maillage interne et une charte strictement identiques partout.
 
@@ -39,7 +39,7 @@ Puis ouvrir `http://localhost:8000/`. Toutes les URLs sont en dossiers (`/derati
 /desinfection-nettoyage-chartres/     │
 /contrat-nuisibles-restaurant-haccp-chartres/
 /nuisibles-copropriete-syndic-chartres/ ┘
-/deratisation-{ville}/         22 pages villes (voir liste §3)
+/deratisation-{ville}/         23 pages villes (voir liste §3)
 /zone-intervention/            hub des communes desservies
 /a-propos/                     page de confiance
 /blog/                         index du blog
@@ -61,19 +61,22 @@ téléphonique (`tel:`), soit une conversation WhatsApp pré-remplie (`wa.me`) �
 ### Pourquoi pas de page « /nuisibles-chartres/ » dédiée ?
 Chartres est le siège de l'entreprise : l'accueil (`/`) porte déjà le mot-clé principal
 « Dératisation & désinsectisation Chartres ». Créer une seconde page ciblant le même mot-clé aurait
-créé une concurrence interne (cannibalisation SEO). Les 22 pages villes couvrent donc les communes
+créé une concurrence interne (cannibalisation SEO). Les 23 pages villes couvrent donc les communes
 **autres que Chartres**, ce qui respecte la fourchette « 10 à 25 villes » demandée.
 
 ### Villes couvertes (pages dédiées)
 Lucé, Mainvilliers, Lèves, Luisant, Le Coudray, Nogent-le-Phaye, Champhol, Barjouville (agglomération) ·
 Dreux, Anet, Châteauneuf-en-Thymerais, Nogent-le-Roi (axe Nord) · Maintenon, Épernon, Gallardon,
-Auneau-Bleury-Saint-Symphorien (axe Est) · Bonneval, Châteaudun, Illiers-Combray (axe Sud) ·
+Auneau-Bleury-Saint-Symphorien, Rambouillet (axe Est) · Bonneval, Châteaudun, Illiers-Combray (axe Sud) ·
 Courville-sur-Eure, Nogent-le-Rotrou, Senonches (axe Ouest/Perche).
 
-Les communes limitrophes desservies **sur devis uniquement** (Rambouillet, Houdan,
-Saint-Arnoult-en-Yvelines, Dourdan, Nonancourt, Saint-André-de-l'Eure) sont listées en texte sur
-`/zone-intervention/` mais n'ont volontairement pas de page dédiée (contenu insuffisant pour être unique
-→ risque de doorway page).
+Rambouillet (78) est en Yvelines et non en Eure-et-Loir : sa page utilise donc « (78) » dans les titres/
+meta au lieu de « (28) », un délai d'intervention plus long (45 à 55 minutes) et mentionne sa zone
+géographique réelle (Yvelines) plutôt que l'Eure-et-Loir dans son texte.
+
+Les autres communes limitrophes desservies **sur devis uniquement** (Houdan, Saint-Arnoult-en-Yvelines,
+Dourdan, Nonancourt, Saint-André-de-l'Eure) sont listées en texte sur `/zone-intervention/` mais n'ont
+volontairement pas de page dédiée (contenu insuffisant pour être unique → risque de doorway page).
 
 ---
 
@@ -153,7 +156,7 @@ du texte, même traitement que la vidéo de l'accueil) : fichiers dans `assets/i
 photos : enregistrer la nouvelle image sous le même nom dans `assets/img/headers/`, en respectant un ratio
 proche de 16:9 et une largeur ≥ 1600 px pour rester net sur grand écran.
 
-Les 22 pages villes n'ont volontairement **pas** de photo dédiée (aucune photo spécifique par commune
+Les 23 pages villes n'ont volontairement **pas** de photo dédiée (aucune photo spécifique par commune
 n'étant réaliste) : leur en-tête utilise un habillage graphique (dégradé + motif), pas une photo. Vous
 pouvez en ajouter une plus tard si vous disposez de vraies photos locales.
 
@@ -237,18 +240,18 @@ visible sur le site (jamais inventée). Récapitulatif :
 ## 9. SEO on-page réalisé
 
 - 1 `<h1>` unique par page, titres ≤ 65 caractères, meta descriptions 140-160 caractères avec téléphone —
-  **vérifié programmatiquement sur les 40 pages** (voir §10).
+  **vérifié programmatiquement sur les 41 pages** (voir §10).
 - `rel="canonical"` absolu + Open Graph complet + Twitter Card sur chaque page ; `og-image.jpg` 1200×630.
 - JSON-LD en `@graph` : `LocalBusiness` + `WebSite` + `FAQPage` sur l'accueil ; `Service` + `BreadcrumbList`
   + `FAQPage` sur les pages prestation et ville ; `BlogPosting` sur les articles. Aucun `aggregateRating`
   auto-proclamé.
 - Maillage interne complet : footer (prestations, villes, NAP), pages prestation ↔ pages ville ↔ blog,
   fil d'Ariane + `BreadcrumbList` sur toutes les pages internes, boutons d'appel/WhatsApp répétés partout.
-- `sitemap.xml` (37 URLs indexables, priorités différenciées) + `robots.txt`.
+- `sitemap.xml` (38 URLs indexables, priorités différenciées) + `robots.txt`.
 
 ## 10. Contrôle qualité effectué
 
-Un script de contrôle a été exécuté sur les 40 pages générées et vérifie automatiquement :
+Un script de contrôle a été exécuté sur les 41 pages générées et vérifie automatiquement :
 - présence et longueur du `<title>` et de la meta description ;
 - unicité du `<h1>` ;
 - présence du canonical et de `lang="fr"` ;
@@ -258,7 +261,7 @@ Un script de contrôle a été exécuté sur les 40 pages générées et vérifi
 
 **Résultat : aucune erreur.** Un serveur local (`python3 -m http.server`) a ensuite été lancé et l'ensemble
 des pages et des assets clés ont répondu **200**. Une vérification croisée (téléphone, e-mail, nom de
-marque) confirme l'absence d'incohérence ou de résidu d'un autre métier/ville dans les 40 pages.
+marque) confirme l'absence d'incohérence ou de résidu d'un autre métier/ville dans les 41 pages.
 
 ---
 
