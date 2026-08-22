@@ -195,18 +195,30 @@ du fichier) :
 
 ---
 
-## 7. ⚠️ Nom de domaine — action requise avant mise en ligne
+## 7. Nom de domaine — nuisiblesecure.fr
 
-Le brief ne précisait pas de nom de domaine définitif. Toutes les URLs canoniques, Open Graph, JSON-LD,
-`sitemap.xml` et `robots.txt` utilisent donc un domaine **provisoire** :
+Le domaine définitif, acheté par le client, est **`nuisiblesecure.fr`** (sans www). Toutes les URLs
+canoniques, Open Graph, JSON-LD, `sitemap.xml` et `robots.txt` du site pointent déjà vers
+`https://nuisiblesecure.fr`.
 
-```
-https://www.nuisibles-secure.fr
-```
+**⚠️ Action requise avant mise en ligne — DNS et hébergement.** Le domaine vient d'être acheté et n'a
+pour l'instant **aucune zone DNS configurée** (il ne résout vers rien). Le site est actuellement en ligne
+sur un sous-domaine d'hébergement temporaire (`nuisible2.nairox.fr`, chez l'hébergeur Nairox). Pour que
+`nuisiblesecure.fr` affiche le site, deux choses sont nécessaires — aucune ne peut être faite depuis ce
+dépôt de code, uniquement depuis les interfaces du registrar et de l'hébergeur :
 
-**Avant mise en ligne**, si le domaine réel diffère : remplacer `https://www.nuisibles-secure.fr` par le
-domaine définitif dans **tous** les fichiers `.html`, dans `sitemap.xml` et dans `robots.txt` (recherche/
-remplacement global sur le dossier).
+1. **DNS** (chez le bureau d'enregistrement où le domaine a été acheté) : soit déléguer les serveurs de
+   noms (NS) à ceux de Nairox, soit garder les NS du registrar et ajouter un enregistrement `A` pour
+   `nuisiblesecure.fr` (et un `A` ou `CNAME` pour `www.nuisiblesecure.fr`) pointant vers l'IP fournie par
+   Nairox pour cet hébergement.
+2. **Hébergement** (panneau Nairox) : ajouter `nuisiblesecure.fr` comme domaine principal (ou « domaine
+   additionnel ») de l'hébergement qui sert actuellement `nuisible2.nairox.fr`, pointé vers le même
+   dossier de fichiers. Activer ensuite le certificat SSL (Let's Encrypt, généralement automatique une
+   fois le domaine ajouté et le DNS propagé) pour que `https://nuisiblesecure.fr` fonctionne.
+
+La propagation DNS peut prendre de quelques minutes à 24-48h. Une fois les deux étapes faites et
+vérifiées, `nuisible2.nairox.fr` peut être conservé (ou redirigé en 301 vers `nuisiblesecure.fr`) sans
+impact sur le code de ce dépôt.
 
 ---
 
