@@ -113,18 +113,22 @@ Sur demande explicite du client, le site n'utilise **aucun formulaire** : chaque
 un appel téléphonique, soit une conversation WhatsApp pré-remplie. Cela concerne le header, la barre mobile
 fixe, le menu mobile, le footer et tous les encarts d'appel à l'action des pages.
 
-**Deux numéros distincts sont utilisés** (sur demande du client) :
-- **Appel** (`tel:`, affiché partout en `09 53 87 02 94`) : `+33953870294`.
-- **WhatsApp** (`https://wa.me/...`) : resté sur l'ancien numéro `33768495393` (format international sans
-  espaces), le `09` n'étant pas une ligne mobile compatible WhatsApp.
+Un seul numéro est utilisé partout, au format international sans espaces **`33953870294`** — aussi bien
+pour les liens `tel:` (affiché `09 53 87 02 94`) que pour WhatsApp (`https://wa.me/33953870294`).
 
 Les liens `tel:` et `https://wa.me/...` sont écrits en dur dans chaque page HTML (pas de JavaScript
 nécessaire : `main.js` ne gère plus que le menu mobile et les apparitions au scroll).
 
-**⚠️ Avant mise en ligne**, vérifier que WhatsApp Business est bien activé sur `33768495393` — sinon le lien
-`https://wa.me/33768495393` n'aboutira à aucune conversation. Si un numéro WhatsApp différent doit être
-utilisé, remplacer `33768495393` par le bon numéro (format international, sans « + » ni espaces) dans
-**tous** les fichiers `.html` (recherche/remplacement global sur `wa.me/33768495393`).
+**⚠️ Avant mise en ligne**, vérifier que WhatsApp Business est bien activé sur `33953870294` — sinon le lien
+`https://wa.me/33953870294` n'aboutira à aucune conversation. Si un numéro WhatsApp différent doit être
+utilisé, remplacer `33953870294` par le bon numéro (format international, sans « + » ni espaces) dans
+**tous** les fichiers `.html` (recherche/remplacement global sur `wa.me/33953870294`).
+
+**Ancien numéro WhatsApp conservé au cas où il faudrait revenir en arrière** :
+`33768495393` (`07 68 49 53 93`) — c'était le numéro utilisé pour WhatsApp avant ce changement (le numéro
+d'appel `tel:` avait déjà été changé séparément en `09 53 87 02 94` juste avant). Pour restaurer ce numéro
+WhatsApp, remplacer `wa.me/33953870294` par `wa.me/33768495393` dans tous les fichiers `.html` (le numéro
+d'appel `tel:` en `09 53 87 02 94` n'a pas besoin de changer).
 
 Le message pré-rempli envoyé est : *« Bonjour, je souhaite un devis gratuit pour une intervention. »*
 
