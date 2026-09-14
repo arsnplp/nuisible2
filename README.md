@@ -113,14 +113,18 @@ Sur demande explicite du client, le site n'utilise **aucun formulaire** : chaque
 un appel téléphonique, soit une conversation WhatsApp pré-remplie. Cela concerne le header, la barre mobile
 fixe, le menu mobile, le footer et tous les encarts d'appel à l'action des pages.
 
-Le numéro utilisé pour WhatsApp est le numéro de téléphone de l'entreprise, au format international sans
-espaces : **`33768495393`**. Les liens `tel:` et `https://wa.me/...` sont écrits en dur dans chaque page
-HTML (pas de JavaScript nécessaire : `main.js` ne gère plus que le menu mobile et les apparitions au scroll).
+**Deux numéros distincts sont utilisés** (sur demande du client) :
+- **Appel** (`tel:`, affiché partout en `09 53 87 02 94`) : `+33953870294`.
+- **WhatsApp** (`https://wa.me/...`) : resté sur l'ancien numéro `33768495393` (format international sans
+  espaces), le `09` n'étant pas une ligne mobile compatible WhatsApp.
 
-**⚠️ Avant mise en ligne**, vérifier que WhatsApp Business est bien activé sur ce numéro (`07 68 49 53 93`) —
-sinon le lien `https://wa.me/33768495393` n'aboutira à aucune conversation. Si un numéro WhatsApp différent
-doit être utilisé, remplacer `33768495393` par le bon numéro (format international, sans « + » ni espaces)
-dans **tous** les fichiers `.html` (recherche/remplacement global sur `wa.me/33768495393`).
+Les liens `tel:` et `https://wa.me/...` sont écrits en dur dans chaque page HTML (pas de JavaScript
+nécessaire : `main.js` ne gère plus que le menu mobile et les apparitions au scroll).
+
+**⚠️ Avant mise en ligne**, vérifier que WhatsApp Business est bien activé sur `33768495393` — sinon le lien
+`https://wa.me/33768495393` n'aboutira à aucune conversation. Si un numéro WhatsApp différent doit être
+utilisé, remplacer `33768495393` par le bon numéro (format international, sans « + » ni espaces) dans
+**tous** les fichiers `.html` (recherche/remplacement global sur `wa.me/33768495393`).
 
 Le message pré-rempli envoyé est : *« Bonjour, je souhaite un devis gratuit pour une intervention. »*
 
@@ -230,7 +234,7 @@ visible sur le site (jamais inventée). Récapitulatif :
 - **Adresse postale exacte** du siège (actuellement « [Adresse précise à compléter], 28000 Chartres »,
   utilisée dans le NAP du footer, la carte « Nous trouver » de la page À propos et le JSON-LD
   `LocalBusiness`) — voir §5 pour mettre à jour le lien Google Maps une fois l'adresse connue.
-- **Numéro WhatsApp Business** : à activer/confirmer sur le `07 68 49 53 93` (voir §4) avant mise en ligne.
+- **Numéro WhatsApp Business** : à activer/confirmer sur le `09 53 87 02 94` (voir §4) avant mise en ligne.
 - **Réseaux sociaux / fiche Google Business** : liens Facebook/Instagram en footer pointent vers `#`.
 - **Avis clients** : aucune citation réelle ni note Google n'ayant été fournie, la section « Avis clients »
   de l'accueil affiche 3 cartes explicitement marquées `[Avis client à compléter]` plutôt que des faux
