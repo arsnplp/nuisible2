@@ -235,7 +235,7 @@ visible sur le site (jamais inventée). Récapitulatif :
   utilisée dans le NAP du footer, la carte « Nous trouver » de la page À propos et le JSON-LD
   `LocalBusiness`) — voir §5 pour mettre à jour le lien Google Maps une fois l'adresse connue.
 - **Numéro WhatsApp Business** : à activer/confirmer sur le `09 53 87 02 94` (voir §4) avant mise en ligne.
-- **Réseaux sociaux / fiche Google Business** : liens Facebook/Instagram en footer pointent vers `#`.
+- **Réseaux sociaux / fiche Google Business** : les icônes Facebook/Instagram du footer (liens vides `#`) ont été retirées en octobre 2026 ; à réintégrer avec les vraies URL une fois les comptes fournis.
 - **Avis clients** : aucune citation réelle ni note Google n'ayant été fournie, la section « Avis clients »
   de l'accueil affiche 3 cartes explicitement marquées `[Avis client à compléter]` plutôt que des faux
   avis. **Ne jamais** les remplacer par des avis inventés — n'utiliser que de vrais avis vérifiés (Google
@@ -244,10 +244,10 @@ visible sur le site (jamais inventée). Récapitulatif :
   aucune certification n'ayant été communiquée, le texte reste en placeholder plutôt que d'affirmer une
   certification non vérifiée.
 - **Année de création de l'entreprise** (page À propos).
-- **Mentions légales** : forme juridique, SIRET/SIREN, capital social, TVA intracommunautaire, directeur
-  de publication, coordonnées de l'hébergeur, durée de conservation des données (RGPD) — aucune de ces
-  informations n'étant dans le brief, elles sont toutes en placeholder. **Ces mentions légales sont
-  obligatoires en France : le site ne doit pas être mis en ligne avant de les avoir complétées.**
+- **Pages légales** (octobre 2026) : `/mentions-legales/` complétée (éditeur, hébergeur Hostinger,
+  conception Acco-lab), `/confidentialite/` et `/cgu/` créées (noindex, hors sitemap) et liées depuis le
+  footer de toutes les pages, y compris le gabarit `blog/_modele-article.html`. Reste à fournir : le
+  **médiateur de la consommation** (nom, adresse, site) à ajouter dans les mentions légales.
 - **Tarifs précis** : aucun tarif chiffré n'ayant été fourni, chaque page prestation indique « devis gratuit,
   prix ferme annoncé avant intervention » plutôt qu'une fourchette inventée.
 

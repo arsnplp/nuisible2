@@ -24,8 +24,9 @@
   /* Couleurs de marque (fixes, ne changent pas avec le thème) */
   --red: #c10206;
   --red-dark: #8f0005;
-  --whatsapp: #1da851;
-  --whatsapp-dark: #168542;
+  --whatsapp: #178641; /* assombri depuis #1da851 : texte blanc 4,6:1 (WCAG AA) */
+  --whatsapp-dark: #14783b;
+  --red-text: #fd3236; /* rouge de marque éclairci pour le texte sur fond sombre (≥ 4,5:1, WCAG AA) */
   --on-brand: #ffffff; /* texte/icônes sur bouton plein rouge ou vert */
 
   /* Palette (thème sombre = valeurs par défaut) */
@@ -67,13 +68,14 @@
 
 /* --- Thème clair ----------------------------------------------------------- */
 :root[data-theme="light"] {
+  --red-text: #c10206;
   --black: #f7f7f8;
   --black-soft: #eeeef0;
   --surface: #ffffff;
   --surface-2: #e9e9ec;
   --white: #16161a;
   --grey-light: #4b4b52;
-  --grey-mid: #75757c;
+  --grey-mid: #67676d; /* assombri depuis #75757c : ≥ 4,5:1 sur les fonds clairs (WCAG AA) */
   --grey-dark: #e0e0e4;
   --header-bg: rgba(255, 255, 255, 0.92);
   --shadow-1: 0 2px 0 rgba(0, 0, 0, 0.08);
@@ -149,7 +151,7 @@ section { padding-block: clamp(48px, 8vw, 96px); }
 .eyebrow {
   display: inline-flex; align-items: center; gap: 8px;
   font-family: var(--font-display); text-transform: uppercase;
-  letter-spacing: 0.14em; font-size: 0.82rem; color: var(--red);
+  letter-spacing: 0.14em; font-size: 0.82rem; color: var(--red-text);
   margin-bottom: 12px;
 }
 .eyebrow::before {
@@ -193,7 +195,7 @@ section { padding-block: clamp(48px, 8vw, 96px); }
 .topbar-info a { display: inline-flex; align-items: center; gap: 6px; white-space: nowrap; }
 .topbar-info a:hover { color: var(--white); }
 .topbar-info svg { width: 14px; height: 14px; color: var(--red); }
-.topbar .badge-open { color: var(--red); font-weight: 700; display: inline-flex; align-items: center; gap: 6px; flex-shrink: 0; white-space: nowrap; }
+.topbar .badge-open { color: var(--red-text); font-weight: 700; display: inline-flex; align-items: center; gap: 6px; flex-shrink: 0; white-space: nowrap; }
 @media (min-width: 1220px) { .topbar { display: block; } }
 .badge-open::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--red); animation: pulse 1.8s infinite; }
 @media (prefers-reduced-motion: reduce) { .badge-open::before { animation: none; } }
@@ -209,7 +211,7 @@ section { padding-block: clamp(48px, 8vw, 96px); }
 .brand img { width: 46px; height: 46px; }
 .brand-text { font-family: var(--font-display); text-transform: uppercase; line-height: 1; }
 .brand-text .l1 { display: block; font-size: 1.05rem; color: var(--white); }
-.brand-text .l2 { display: block; font-size: 1.05rem; color: var(--red); }
+.brand-text .l2 { display: block; font-size: 1.05rem; color: var(--red-text); }
 
 .main-nav { display: none; }
 .main-nav > ul { display: flex; align-items: center; gap: 4px; }
@@ -218,7 +220,7 @@ section { padding-block: clamp(48px, 8vw, 96px); }
   border-radius: var(--radius-s); transition: color 0.2s, background 0.2s;
 }
 .main-nav a:hover, .main-nav a[aria-current="page"] { color: var(--white); background: var(--surface); }
-.main-nav a[aria-current="page"] { color: var(--red); }
+.main-nav a[aria-current="page"] { color: var(--red-text); }
 .has-dropdown { position: relative; }
 .dropdown {
   display: flex; flex-direction: column; gap: 2px;
@@ -423,7 +425,7 @@ section { padding-block: clamp(48px, 8vw, 96px); }
 .service-card .icon-wrap svg { width: 30px; height: 30px; color: var(--red); }
 .service-card h3 { margin-bottom: 10px; font-size: 1.15rem; }
 .service-card p { font-size: 0.94rem; flex-grow: 1; }
-.service-card .card-link { margin-top: 16px; display: inline-flex; align-items: center; gap: 8px; font-weight: 700; color: var(--red); font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.03em; }
+.service-card .card-link { margin-top: 16px; display: inline-flex; align-items: center; gap: 8px; font-weight: 700; color: var(--red-text); font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.03em; }
 .service-card .card-link svg { width: 16px; height: 16px; transition: transform 0.2s; }
 .card:hover .card-link svg { transform: translateX(4px); }
 
@@ -455,7 +457,7 @@ section { padding-block: clamp(48px, 8vw, 96px); }
 .blog-card .blog-meta { display: flex; gap: 10px; align-items: center; margin-top: 16px; font-size: 0.78rem; color: var(--grey-mid); text-transform: uppercase; letter-spacing: 0.04em; }
 .blog-card h3 { margin-top: 10px; font-size: 1.15rem; text-transform: none; font-family: var(--font-body); font-weight: 800; letter-spacing: 0; }
 .blog-card p { margin-top: 10px; font-size: 0.94rem; }
-.blog-card .card-link { margin-top: 14px; display: inline-flex; gap: 8px; color: var(--red); font-weight: 700; font-size: 0.88rem; text-transform: uppercase; }
+.blog-card .card-link { margin-top: 14px; display: inline-flex; gap: 8px; color: var(--red-text); font-weight: 700; font-size: 0.88rem; text-transform: uppercase; }
 
 /* --- Section zone (villes + carte) ------------------------------------------ */
 .zone-layout { display: grid; gap: 32px; align-items: center; grid-template-columns: 1fr; }
@@ -492,9 +494,10 @@ section { padding-block: clamp(48px, 8vw, 96px); }
 .prose ul li::before { content: ""; position: absolute; left: 0; top: 0.55em; width: 10px; height: 10px; background: var(--red); }
 .prose ol { counter-reset: item; }
 .prose ol li { counter-increment: item; }
-.prose ol li::before { content: counter(item); position: absolute; left: 0; top: 0; color: var(--red); font-family: var(--font-display); }
-.prose a { color: var(--red); text-decoration: underline; text-underline-offset: 3px; }
+.prose ol li::before { content: counter(item); position: absolute; left: 0; top: 0; color: var(--red-text); font-family: var(--font-display); }
+.prose a { color: var(--red-text); text-decoration: underline; text-underline-offset: 3px; }
 .prose .btn { color: var(--white); text-decoration: none; }
+.prose .btn-primary, .prose .btn-whatsapp { color: var(--on-brand); } /* texte blanc sur bouton plein, y compris en thème clair */
 .prose blockquote { border-left: 3px solid var(--red); padding-left: 20px; color: var(--grey-light); font-style: italic; margin: 1.4em 0; }
 .prose table { margin: 1.4em 0; font-size: 0.92rem; }
 .prose th, .prose td { border: 1px solid var(--border); padding: 12px 14px; text-align: left; }
